@@ -183,6 +183,8 @@ public class CadastroSistema extends javax.swing.JDialog {
         CadastroSistemaDao cdSistemaDao = new CadastroSistemaDao();
         cdSistemaDao.salvar(cdSistema);
         JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
+        jtSistema.setText("");
+        jTVersao.setText("");
     }
 
 }
