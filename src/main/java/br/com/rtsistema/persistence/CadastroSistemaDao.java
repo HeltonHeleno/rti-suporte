@@ -1,16 +1,16 @@
 
 package br.com.rtsistema.persistence;
 
-import br.com.rtsistema.views.CadastroSistema;
+import br.com.rtsistema.domain.Sistema;
 
 /**
  *
  * @author Helton
  */
-public class CadastroSistemaDao extends  GenericDao<CadastroSistema>{
+public class CadastroSistemaDao extends  GenericDao<Sistema>{
     
     public CadastroSistemaDao() {
-        super(CadastroSistema.class);
+        super(Sistema.class);
     }
     
 }

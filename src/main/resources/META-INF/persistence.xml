@@ -9,9 +9,8 @@
     <class>br.com.rtsistema.domain.Sistema</class>
     <class>br.com.rtsistema.domain.Telefone</class>
     <class>br.com.rtsistema.domain.Usuario</class>
-    <validation-mode>NONE</validation-mode>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/suportedb"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/suportedb"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
       <property name="javax.persistence.jdbc.password" value="admin"/>

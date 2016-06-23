@@ -39,6 +39,7 @@ public abstract class GenericDao<T extends Serializable> {
         getTransaction().begin();
         em.persist(clazz);
         getTransaction().commit();
+        em.close();
     }
 
     public T update(T clazz) {
@@ -52,6 +53,7 @@ public abstract class GenericDao<T extends Serializable> {
         getTransaction().begin();
         em.remove(clazz);
         getTransaction().commit();
+        em.close();
     }
 
     public void excluir(Long id) {
