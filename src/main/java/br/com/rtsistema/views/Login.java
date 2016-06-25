@@ -45,6 +45,12 @@ public class Login extends javax.swing.JDialog {
 
         jLUsuario.setText("Usuario:");
 
+        jTUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTUsuarioActionPerformed(evt);
+            }
+        });
+
         jLSenha.setText("Senha:");
 
         jPSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +143,10 @@ public class Login extends javax.swing.JDialog {
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_jBSairActionPerformed
+
+    private void jTUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTUsuarioActionPerformed
 
      /**
      * @param args the command line arguments

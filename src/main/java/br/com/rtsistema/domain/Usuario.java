@@ -12,6 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import br.com.rtsistema.domain.Endereco;
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+
 /**
  *
  * @author Helton
@@ -34,6 +40,40 @@ public class Usuario implements Serializable{
     private String usuario;
     private String senha;
     
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Email email;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Telefone telefone;
+
+    
+    public Email getEmail() {
+        return email;
+    }
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+    
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
     
 
     public Long getId() {
@@ -122,6 +162,10 @@ public class Usuario implements Serializable{
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public void setLogradouro(String text) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
             
 }

@@ -100,6 +100,11 @@ public class CadastroChamados extends javax.swing.JDialog {
         jLClassificacao.setText("Classificação:");
 
         jCClassificacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCClassificacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCClassificacaoActionPerformed(evt);
+            }
+        });
 
         jLData.setText("Data:");
 
@@ -374,6 +379,10 @@ public class CadastroChamados extends javax.swing.JDialog {
         
     
     }//GEN-LAST:event_jBConfirmarActionPerformed
+
+    private void jCClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCClassificacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCClassificacaoActionPerformed
 
   
 

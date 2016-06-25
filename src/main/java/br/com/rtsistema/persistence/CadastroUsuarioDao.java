@@ -5,6 +5,7 @@
  */
 package br.com.rtsistema.persistence;
 
+
 import br.com.rtsistema.domain.Usuario;
 
 /**
@@ -17,5 +18,5 @@ public class CadastroUsuarioDao extends GenericDao<Usuario> {
         super(Usuario.class);
     }
 
-    
+       
 }

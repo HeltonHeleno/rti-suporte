@@ -7,10 +7,12 @@ package br.com.rtsistema.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -31,7 +33,41 @@ public class Cliente implements Serializable {
     private Date expedicao;
     private Date nascimento;
     private Date cadastro;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Endereco endereco;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Email email;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Telefone telefone;
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public Email getEmail() {
+        return email;
+    }
+
+    public void setEmail(Email email) {
+        this.email = email;
+    }
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+    
+        
     public Long getId() {
         return id;
     }

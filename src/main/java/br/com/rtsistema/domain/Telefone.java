@@ -22,7 +22,7 @@ public class Telefone implements Serializable{
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     private Long id;
     
-    private int ddd;
+    private String ddd;
     private String telefone1;
     private String telefone2;
     private String celular;
@@ -39,11 +39,11 @@ public class Telefone implements Serializable{
         this.id = id;
     }
 
-    public int getDdd() {
+    public String getDdd() {
         return ddd;
     }
 
-    public void setDdd(int ddd) {
+    public void setDdd(String ddd) {
         this.ddd = ddd;
     }
 
