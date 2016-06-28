@@ -16,6 +16,7 @@ public class Chamados extends javax.swing.JDialog {
      */
    public Chamados (){
        initComponents();
+       setModal(true);
    }
 
     /**

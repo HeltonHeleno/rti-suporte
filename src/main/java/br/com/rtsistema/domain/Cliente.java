@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -30,8 +31,11 @@ public class Cliente implements Serializable {
     private String cpf;
     private String ie;
     private String ssp;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date expedicao;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date cadastro;
     
     @ManyToOne(cascade = CascadeType.ALL)

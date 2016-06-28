@@ -5,17 +5,17 @@
  */
 package br.com.rtsistema.persistence;
 
-
-import br.com.rtsistema.domain.Usuario;
+import br.com.rtsistema.domain.Cliente;
+import java.io.Serializable;
 
 /**
  *
  * @author Helton
  */
-public class CadastroUsuarioDao extends GenericDao<Usuario> {
+public class CadastroClienteDao extends GenericDao<Cliente> {
     
-    public CadastroUsuarioDao() {
-        super(Usuario.class);
+    public CadastroClienteDao() {
+        super(Cliente.class);
     }
-       
+    
 }

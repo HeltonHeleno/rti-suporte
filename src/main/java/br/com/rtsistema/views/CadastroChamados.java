@@ -16,6 +16,7 @@ public class CadastroChamados extends javax.swing.JDialog {
      */
     public CadastroChamados() {
            initComponents();
+           setModal(true);
     }
 
     

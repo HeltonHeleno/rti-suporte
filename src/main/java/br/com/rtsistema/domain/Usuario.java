@@ -13,9 +13,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import br.com.rtsistema.domain.Endereco;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
+
+import javax.persistence.Temporal;
 
 
 /**
@@ -34,8 +38,11 @@ public class Usuario implements Serializable{
     private String cpf;
     private String ie;
     private String ssp;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date expedicao;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date nascimento;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date cadastro;
     private String usuario;
     private String senha;
@@ -43,16 +50,22 @@ public class Usuario implements Serializable{
     @ManyToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Email email;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Email> email = new ArrayList<>();
     
     @ManyToOne(cascade = CascadeType.ALL)
     private Telefone telefone;
 
-    
-    public Email getEmail() {
+    public List<Email> getEmail() {
         return email;
     }
+
+    public void setEmail(List<Email> email) {
+        this.email = email;
+    }
+
+    
+    
 
     public Telefone getTelefone() {
         return telefone;
@@ -62,10 +75,7 @@ public class Usuario implements Serializable{
         this.telefone = telefone;
     }
 
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-    
+   
 
     public Endereco getEndereco() {
         return endereco;

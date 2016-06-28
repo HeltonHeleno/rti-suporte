@@ -13,6 +13,7 @@ import br.com.rtsistema.persistence.CadastroUsuarioDao;
 import br.com.rtisistemas.tableModel.EmailTableModel;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -21,18 +22,17 @@ import java.util.Arrays;
 public class CadastroUsuario extends javax.swing.JDialog {
     
     EmailTableModel tmUsuario = new EmailTableModel();
+    private List<Email> emails;
 
     /**
      * Creates new form CadastroUsuario
      */
     public CadastroUsuario() {
            initComponents();
+           emails = new ArrayList<>();
+           tmUsuario.setLista(emails);
            jTTableEmail.setModel(tmUsuario);
-//           Email em = new Email();
-//           em.setEmail("seila.com");
-//           tmUsuario.setLista(Arrays.asList(em));
-//           jTTableEmail.updateUI();
-           
+       
     }
 
     /**
@@ -96,12 +96,10 @@ public class CadastroUsuario extends javax.swing.JDialog {
         jLTelefone1 = new javax.swing.JLabel();
         jTTelefone1 = new javax.swing.JTextField();
         jLTelefone2 = new javax.swing.JLabel();
-        jTTelefone2 = new javax.swing.JTextField();
         jLCelular = new javax.swing.JLabel();
         jTCelular = new javax.swing.JTextField();
-        jLContato = new javax.swing.JLabel();
-        jTContato = new javax.swing.JTextField();
         jTDdd = new javax.swing.JTextField();
+        jTTelefone2 = new javax.swing.JTextField();
         jBCancelar = new javax.swing.JButton();
         jBConfirmar = new javax.swing.JButton();
 
@@ -242,29 +240,24 @@ public class CadastroUsuario extends javax.swing.JDialog {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(23, 23, 23)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLEstado)
+                    .addComponent(jLCidade)
+                    .addComponent(jLBairro)
+                    .addComponent(jLComplemento)
+                    .addComponent(jLLogradouro)
+                    .addComponent(jLendereco)
+                    .addComponent(jLNumero))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLCidade)
-                            .addComponent(jLBairro)
-                            .addComponent(jLComplemento)
-                            .addComponent(jLLogradouro)
-                            .addComponent(jLendereco)
-                            .addComponent(jLNumero))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTEndereco)
-                                .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTComplemento)
-                                .addComponent(jTBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
-                            .addComponent(jTCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLEstado)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTEndereco)
+                        .addComponent(jTNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTComplemento)
+                        .addComponent(jTBairro, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE))
+                    .addComponent(jTCidade, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(244, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -294,7 +287,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLCidade)
                     .addComponent(jTCidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(6, 6, 6)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLEstado)
                     .addComponent(jTEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -339,6 +332,11 @@ public class CadastroUsuario extends javax.swing.JDialog {
 
         jBExcluiEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/mail_delete.png"))); // NOI18N
         jBExcluiEmail.setText("Excluir");
+        jBExcluiEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBExcluiEmailActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -366,7 +364,8 @@ public class CadastroUsuario extends javax.swing.JDialog {
                     .addComponent(jBSalvarEmail)
                     .addComponent(jBExcluiEmail))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jSTabelaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jSTabelaEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -392,14 +391,6 @@ public class CadastroUsuario extends javax.swing.JDialog {
 
         jLCelular.setText("Celular:");
 
-        jLContato.setText("Contato:");
-
-        jTContato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTContatoActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
@@ -410,17 +401,14 @@ public class CadastroUsuario extends javax.swing.JDialog {
                     .addComponent(jLCelular)
                     .addComponent(jLTelefone2)
                     .addComponent(jLDDD)
-                    .addComponent(jLTelefone1)
-                    .addComponent(jLContato))
+                    .addComponent(jLTelefone1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jTCelular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                        .addComponent(jTTelefone1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jTTelefone2, javax.swing.GroupLayout.Alignment.LEADING))
-                    .addComponent(jTContato, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTDdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTCelular, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jTTelefone1)
+                    .addComponent(jTDdd, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTTelefone2))
+                .addContainerGap(466, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -435,17 +423,13 @@ public class CadastroUsuario extends javax.swing.JDialog {
                     .addComponent(jTTelefone1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLTelefone2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLTelefone2)
+                    .addComponent(jTTelefone2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLCelular))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLContato)
-                    .addComponent(jTContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGap(234, 234, 234))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -456,7 +440,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, 358, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Telefone", jPanel8);
@@ -486,9 +470,9 @@ public class CadastroUsuario extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(192, 192, 192)
+                .addGap(194, 194, 194)
                 .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(98, 98, 98)
+                .addGap(139, 139, 139)
                 .addComponent(jBConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -497,36 +481,38 @@ public class CadastroUsuario extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jBCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBConfirmar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTContatoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTContatoActionPerformed
 
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
         salvar();
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
     private void jTNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNomeKeyPressed
-        if(evt.getKeyCode() == evt.VK_ENTER){
-            jTCPF_CNPJ.setFocusable(true);
-        }
+        
     }//GEN-LAST:event_jTNomeKeyPressed
 
     private void jBSalvarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarEmailActionPerformed
-        // TODO add your handling code here:
+        Email em = new Email();
+        em.setEmail(jTEmail.getText());
+        emails.add(em);
+        tmUsuario.setLista(emails);
+        jTTableEmail.updateUI();
+       
+
+           
     }//GEN-LAST:event_jBSalvarEmailActionPerformed
 
-  
-    
+    private void jBExcluiEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluiEmailActionPerformed
+        
+    }//GEN-LAST:event_jBExcluiEmailActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
@@ -542,7 +528,6 @@ public class CadastroUsuario extends javax.swing.JDialog {
     private javax.swing.JLabel jLCelular;
     private javax.swing.JLabel jLCidade;
     private javax.swing.JLabel jLComplemento;
-    private javax.swing.JLabel jLContato;
     private javax.swing.JLabel jLDDD;
     private javax.swing.JLabel jLEmail;
     private javax.swing.JLabel jLEstado;
@@ -574,7 +559,6 @@ public class CadastroUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField jTCelular;
     private javax.swing.JTextField jTCidade;
     private javax.swing.JTextField jTComplemento;
-    private javax.swing.JTextField jTContato;
     private javax.swing.JTextField jTDdd;
     private javax.swing.JTextField jTEmail;
     private javax.swing.JTextField jTEndereco;
@@ -590,6 +574,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField jTUsuario;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
+    
     private void salvar(){
         Usuario usuario = new Usuario();
         usuario.setCpf(jTCPF_CNPJ.getText());
@@ -609,16 +594,14 @@ public class CadastroUsuario extends javax.swing.JDialog {
         endereco.setEstado(jTEstado.getText());
         usuario.setEndereco(endereco);
         
-        Email email = new Email();
-        email.setEmail(jTEmail.getText());
-        usuario.setEmail(email);
-        
+        usuario.setEmail(emails);
+                      
         Telefone telefone = new Telefone();
         telefone.setDdd(jTDdd.getText());
         telefone.setTelefone1(jTTelefone1.getText());
         telefone.setTelefone2(jTTelefone2.getText());
         telefone.setCelular(jTCelular.getText());
-        telefone.setContato(jTContato.getText());
+        
        
         CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
         cdUsuarioDao.salvar(usuario);

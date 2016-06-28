@@ -16,6 +16,8 @@ public class SistemaEmpresa extends javax.swing.JDialog {
      */
     public SistemaEmpresa() {
         initComponents();
+        setModal(true);
+        
     }
 
     /**

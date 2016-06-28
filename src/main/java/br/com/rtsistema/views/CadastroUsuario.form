@@ -25,9 +25,9 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="192" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="194" max="-2" attributes="0"/>
               <Component id="jBCancelar" min="-2" pref="67" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="139" max="-2" attributes="0"/>
               <Component id="jBConfirmar" min="-2" pref="67" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -38,12 +38,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jBCancelar" min="-2" pref="33" max="-2" attributes="0"/>
-                  <Component id="jBConfirmar" min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jBConfirmar" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jBCancelar" alignment="1" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -284,36 +284,28 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jLEstado" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLCidade" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLBairro" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLComplemento" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLLogradouro" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLendereco" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLNumero" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jLCidade" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLBairro" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLComplemento" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLLogradouro" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLendereco" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLNumero" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jTLogradouro" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
-                                              <Component id="jTEndereco" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTNumero" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                                              <Component id="jTComplemento" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jTBairro" alignment="0" pref="330" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="jTCidade" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jTLogradouro" alignment="0" min="-2" pref="171" max="-2" attributes="0"/>
+                                      <Component id="jTEndereco" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTNumero" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                                      <Component id="jTComplemento" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="jTBairro" alignment="0" pref="330" max="32767" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                      <Component id="jLEstado" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jTEstado" min="-2" pref="56" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jTCidade" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                                  <Component id="jTEstado" min="-2" pref="74" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="244" max="32767" attributes="0"/>
                           </Group>
@@ -352,7 +344,7 @@
                                   <Component id="jLCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTCidade" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLEstado" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jTEstado" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -471,7 +463,8 @@
                                   <Component id="jBExcluiEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jSTabelaEmail" min="-2" pref="311" max="-2" attributes="0"/>
+                              <Component id="jSTabelaEmail" min="-2" pref="300" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -523,6 +516,9 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Excluir"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBExcluiEmailActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -545,7 +541,7 @@
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="jPanel9" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jPanel9" alignment="0" pref="358" max="32767" attributes="0"/>
                   </Group>
                 </DimensionLayout>
               </Layout>
@@ -555,26 +551,22 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Component id="jLCelular" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLTelefone2" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLDDD" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLTelefone1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLContato" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="jTCelular" alignment="0" pref="120" max="32767" attributes="0"/>
-                                      <Component id="jTTelefone1" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="jTTelefone2" alignment="0" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="jTContato" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTCelular" alignment="0" pref="120" max="32767" attributes="0"/>
+                                  <Component id="jTTelefone1" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jTDdd" alignment="0" min="-2" pref="40" max="-2" attributes="0"/>
+                                  <Component id="jTTelefone2" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="402" max="32767" attributes="0"/>
+                              <EmptySpace pref="466" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -593,20 +585,15 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jTTelefone2" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                                   <Component id="jLTelefone2" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jTTelefone2" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jTCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLCelular" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jLContato" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jTContato" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="203" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -629,8 +616,6 @@
                         <Property name="text" type="java.lang.String" value="Telefone 2:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="jTTelefone2">
-                    </Component>
                     <Component class="javax.swing.JLabel" name="jLCelular">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Celular:"/>
@@ -638,17 +623,9 @@
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTCelular">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="jLContato">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Contato:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="jTContato">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTContatoActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JTextField" name="jTDdd">
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="jTTelefone2">
                     </Component>
                   </SubComponents>
                 </Container>

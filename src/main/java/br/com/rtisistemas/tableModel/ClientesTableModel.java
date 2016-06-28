@@ -5,8 +5,7 @@
  */
 package br.com.rtisistemas.tableModel;
 
-import br.com.rtsistema.domain.Email;
-import br.com.rtsistema.domain.Usuario;
+import br.com.rtsistema.domain.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
@@ -15,30 +14,34 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author Helton
  */
-public class EmailTableModel extends br.tablemodel.TableModelBase<Email>{
+public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
 
     @Override
     public int getColumnCount() {
-        return 1;
+        return 4;
     }
 
     @Override
     public String getColumnName(int column) {
-       return "Email";
+         String[] colunas = {"Codigo", "Nome", "IE", "CPF"};
+        return colunas[column];
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-          Email obj = lista.get(rowIndex);
+        Cliente obj = lista.get(rowIndex);
          switch (columnIndex) {
             case 0:
-                return obj.getEmail();
-           
+                return obj.getId();
+            case 1:
+                return obj.getNome();
+            case 2:
+                return obj.getIe();
+            case 3:
+                return obj.getCpf();
         }
-        return obj;
+         return obj;
     }
 
-   
-    
-    
+       
 }

@@ -5,6 +5,10 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtsistema.domain.Cliente;
+import br.com.rtsistema.persistence.CadastroClienteDao;
+import java.util.List;
+
 /**
  *
  * @author Helton
@@ -16,6 +20,10 @@ public class Clientes extends javax.swing.JDialog {
      */
     public Clientes() {
         initComponents();
+        setModal(true);
+        
+        CadastroClienteDao cdClienteDao = new CadastroClienteDao();
+        List<Cliente>Clientes = cdClienteDao.findAll();
     }
 
     /**
