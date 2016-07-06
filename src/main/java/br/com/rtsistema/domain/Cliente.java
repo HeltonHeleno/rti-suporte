@@ -6,13 +6,16 @@
 package br.com.rtsistema.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
 /**
@@ -41,37 +44,12 @@ public class Cliente implements Serializable {
     @ManyToOne(cascade = CascadeType.ALL)
     private Endereco endereco;
     
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Email email;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Email> email = new ArrayList<>();
     
     @ManyToOne(cascade = CascadeType.ALL)
     private Telefone telefone;
 
-    public Endereco getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    public void setEmail(Email email) {
-        this.email = email;
-    }
-
-    public Telefone getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(Telefone telefone) {
-        this.telefone = telefone;
-    }
-    
-        
     public Long getId() {
         return id;
     }
@@ -143,7 +121,32 @@ public class Cliente implements Serializable {
     public void setCadastro(Date cadastro) {
         this.cadastro = cadastro;
     }
-    
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
+    public List<Email> getEmail() {
+        return email;
+    }
+
+    public void setEmail(List<Email> email) {
+        this.email = email;
+    }
+
+    public Telefone getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Telefone telefone) {
+        this.telefone = telefone;
+    }
+
+   
     
            
     

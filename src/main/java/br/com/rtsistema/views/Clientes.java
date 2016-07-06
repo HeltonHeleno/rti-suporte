@@ -22,8 +22,8 @@ public class Clientes extends javax.swing.JDialog {
         initComponents();
         setModal(true);
         
-        CadastroClienteDao cdClienteDao = new CadastroClienteDao();
-        List<Cliente>Clientes = cdClienteDao.findAll();
+       // CadastroClienteDao cdClienteDao = new CadastroClienteDao();
+       // List<Cliente>Clientes = cdClienteDao.findAll();
     }
 
     /**

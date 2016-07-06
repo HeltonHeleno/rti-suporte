@@ -20,7 +20,7 @@ public class CadastroSistema extends javax.swing.JDialog {
      */
     public CadastroSistema() {
         initComponents();
-        setModal(true);
+        
     }
 
     @SuppressWarnings("unchecked")

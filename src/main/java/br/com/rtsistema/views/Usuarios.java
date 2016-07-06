@@ -16,7 +16,7 @@ public class Usuarios extends javax.swing.JDialog {
      */
     public Usuarios() {
         initComponents();
-        setModal(true);
+       
         
     }
 

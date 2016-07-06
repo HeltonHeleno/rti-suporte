@@ -14,6 +14,7 @@ import br.com.rtisistemas.tableModel.EmailTableModel;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -605,8 +606,23 @@ public class CadastroUsuario extends javax.swing.JDialog {
        
         CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
         cdUsuarioDao.salvar(usuario);
-        
-              
+        JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
+        jTCPF_CNPJ.setText("");
+        jTNome.setText("");
+        jTIE_RG.setText("");
+        jTSSP.setText("");
+        jTUsuario.setText("");
+        jPSenha.setText("");
+        jTCPF_CNPJ.setText("");
+        jTNome.setText("");
+        jTIE_RG.setText("");
+        jTSSP.setText("");
+        jTUsuario.setText("");
+        jPSenha.setText("");
+        jTDdd.setText("");
+        jTTelefone1.setText("");
+        jTTelefone2.setText("");
+        jTCelular.setText("");
     }
 
 }
