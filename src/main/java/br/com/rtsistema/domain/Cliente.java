@@ -146,6 +146,18 @@ public class Cliente implements Serializable {
         this.telefone = telefone;
     }
 
+    public class getEmail {
+
+        public static Email get(int i) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+       
+
+        public getEmail() {
+        }
+    }
+
    
     
            

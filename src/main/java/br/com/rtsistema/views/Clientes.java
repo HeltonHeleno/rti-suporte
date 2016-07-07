@@ -16,18 +16,18 @@ import java.util.List;
  * @author Helton
  */
 public class Clientes extends javax.swing.JDialog {
+
     ClientesTableModel clTableModel = new ClientesTableModel();
     private List<Cliente> clientes;
-    
+
     public Clientes() {
-        initComponents(); 
+        initComponents();
         CadastroClienteDao cdClienteDao = new CadastroClienteDao();
         clientes = cdClienteDao.findAll();
         clTableModel.setLista(clientes);
         jTCliente.setModel(clTableModel);
         setModal(true);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -125,17 +125,18 @@ public class Clientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jMnovoActionPerformed
 
     private void jMAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarActionPerformed
-        ClientesTableModel.getLista().get(jTCliente.getSelectedRow());
-        
-        
-        
+        //clTableModel.getClientes().get(jTCliente.getSelectedRow());
+        //CadastroCliente cdCliente = new CadastroCliente();
+        //setVisible(true);
+        Cliente cliente = clTableModel.getClientes().get(jTCliente.getSelectedRow());
+        CadastroCliente cadastroClientes = new CadastroCliente(cliente);
+
     }//GEN-LAST:event_jMAlterarActionPerformed
 
     private void jMAtualizarStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAtualizarStatusActionPerformed
-        
+
     }//GEN-LAST:event_jMAtualizarStatusActionPerformed
 
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem jMAlterar;
@@ -150,5 +151,4 @@ public class Clientes extends javax.swing.JDialog {
     private javax.swing.JTable jTCliente;
     // End of variables declaration//GEN-END:variables
 
-    
 }

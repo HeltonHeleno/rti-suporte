@@ -16,7 +16,11 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
 
-   
+    private List<Cliente> clientes = new ArrayList<>();
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
 
     @Override
     public int getColumnCount() {
@@ -25,14 +29,14 @@ public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
 
     @Override
     public String getColumnName(int column) {
-         String[] colunas = {"Codigo", "Nome", "IE", "CPF"};
+        String[] colunas = {"Codigo", "Nome", "IE", "CPF"};
         return colunas[column];
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Cliente obj = lista.get(rowIndex);
-         switch (columnIndex) {
+        switch (columnIndex) {
             case 0:
                 return obj.getId();
             case 1:
@@ -42,8 +46,7 @@ public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
             case 3:
                 return obj.getCpf();
         }
-         return obj;
+        return obj;
     }
 
-       
 }

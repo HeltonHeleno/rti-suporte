@@ -5,6 +5,7 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtisistemas.tableModel.ClientesTableModel;
 import br.com.rtisistemas.tableModel.EmailTableModel;
 import br.com.rtsistema.domain.Cliente;
 import br.com.rtsistema.domain.Email;
@@ -24,8 +25,39 @@ public class CadastroCliente extends javax.swing.JDialog {
     EmailTableModel tmUsuario = new EmailTableModel();
     private List<Email> emails;
 
+    public CadastroCliente(Cliente cliente) {
+        initValues();
+        // aqui vc vai setar os valores no campo
+        jTCPF_CNPJ.setText(cliente.getCpf());
+        jTNome.setText(cliente.getNome());
+        jTFantasia.setText(cliente.getFantasia());
+        jTIE.setText(cliente.getIe());
+        jTSSP.setText(cliente.getSsp());
+        Endereco endereco = cliente.getEndereco();
+        jTLogradouro.setText(endereco.getLogradouro());
+        jTEndereco.setText(endereco.getEndereco());
+        jTNumero.setText(endereco.getNumero());
+        jTComplemento.setText(endereco.getComplemento());
+        jTBairro.setText(endereco.getBairro());
+        jTcidade.setText(endereco.getCidade());
+        jTEstado.setText(endereco.getEstado());
+        Email email = cliente.getEmail.get(0);
+        
+        Telefone telefone = cliente.getTelefone();
+        jTDDD.setText(telefone.getDdd());
+        jTTelefone1.setText(telefone.getTelefone1());
+        jTTelefone2.setText(telefone.getTelefone2());
+        jTCelular.setText(telefone.getCelular());
+        jTContato.setText(telefone.getContato());
+        setVisible(true);
+    }
+
     public CadastroCliente() {
         initComponents();
+        initValues();
+    }
+
+    private void initValues() {
         emails = new ArrayList<>();
         tmUsuario.setLista(emails);
         jTTableEmail.setModel(tmUsuario);
@@ -638,50 +670,8 @@ public class CadastroCliente extends javax.swing.JDialog {
     }
 
     private void alterar() {
-        Cliente cliente = new Cliente();
-        cliente.setCpf(jTCPF_CNPJ.getText());
-        cliente.setNome(jTNome.getText());
-        cliente.setFantasia(jTFantasia.getText());
-        cliente.setIe(jTIE.getText());
-        cliente.setSsp(jTSSP.getText());
 
-        Endereco endereco = new Endereco();
-        endereco.setLogradouro(jTLogradouro.getText());
-        endereco.setEndereco(jTEndereco.getText());
-        endereco.setNumero(jTNumero.getText());
-        endereco.setComplemento(jTComplemento.getText());
-        endereco.setBairro(jTBairro.getText());
-        endereco.setCidade(jTcidade.getText());
-        endereco.setEstado(jTEstado.getText());
-        cliente.setEndereco(endereco);
-
-        cliente.setEmail(emails);
-
-        Telefone telefone = new Telefone();
-        telefone.setDdd(jTDDD.getText());
-        telefone.setTelefone1(jTTelefone1.getText());
-        telefone.setTelefone2(jTTelefone2.getText());
-        telefone.setCelular(jTCelular.getText());
-        telefone.setContato(jTContato.getText());
-        CadastroClienteDao cdClienteDao = new CadastroClienteDao();
-        cdClienteDao.salvar(cliente);
-        JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
-        jTCPF_CNPJ.setText("");
-        jTNome.setText("");
-        jTFantasia.setText("");
-        jTIE.setText("");
-        jTSSP.setText("");
-        jTLogradouro.setText("");
-        jTEndereco.setText("");
-        jTNumero.setText("");
-        jTComplemento.setText("");
-        jTBairro.setText("");
-        jTcidade.setText("");
-        jTEstado.setText("");
-        jTDDD.setText("");
-        jTTelefone1.setText("");
-        jTTelefone2.setText("");
-        jTCelular.setText("");
-        jTContato.setText("");
     }
+
+   
 }
