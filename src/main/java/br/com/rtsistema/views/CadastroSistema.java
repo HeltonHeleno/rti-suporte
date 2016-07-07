@@ -20,6 +20,7 @@ public class CadastroSistema extends javax.swing.JDialog {
      */
     public CadastroSistema() {
         initComponents();
+        setModal(true);
         
     }
 
@@ -116,6 +117,11 @@ public class CadastroSistema extends javax.swing.JDialog {
         );
 
         jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/forbidden.png"))); // NOI18N
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
 
         jBConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/check.png"))); // NOI18N
         jBConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -153,6 +159,10 @@ public class CadastroSistema extends javax.swing.JDialog {
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
         salvar();
     }//GEN-LAST:event_jBConfirmarActionPerformed
+
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jBCancelarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

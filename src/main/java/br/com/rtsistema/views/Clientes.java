@@ -5,8 +5,10 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtisistemas.tableModel.ClientesTableModel;
 import br.com.rtsistema.domain.Cliente;
 import br.com.rtsistema.persistence.CadastroClienteDao;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,17 +16,18 @@ import java.util.List;
  * @author Helton
  */
 public class Clientes extends javax.swing.JDialog {
-
-    /**
-     * Creates new form Clientes
-     */
+    ClientesTableModel clTableModel = new ClientesTableModel();
+    private List<Cliente> clientes;
+    
     public Clientes() {
-        initComponents();
+        initComponents(); 
+        CadastroClienteDao cdClienteDao = new CadastroClienteDao();
+        clientes = cdClienteDao.findAll();
+        clTableModel.setLista(clientes);
+        jTCliente.setModel(clTableModel);
         setModal(true);
-        
-       // CadastroClienteDao cdClienteDao = new CadastroClienteDao();
-       // List<Cliente>Clientes = cdClienteDao.findAll();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,7 +39,7 @@ public class Clientes extends javax.swing.JDialog {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTCliente = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMArquivo = new javax.swing.JMenu();
         jMnovo = new javax.swing.JMenuItem();
@@ -49,7 +52,7 @@ public class Clientes extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Clientes");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -60,7 +63,7 @@ public class Clientes extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTCliente);
 
         jMArquivo.setText("Arquivo");
 
@@ -81,6 +84,11 @@ public class Clientes extends javax.swing.JDialog {
         jMArquivo.add(jMAlterar);
 
         jMAtualizarStatus.setText("Atualizar Status");
+        jMAtualizarStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMAtualizarStatusActionPerformed(evt);
+            }
+        });
         jMArquivo.add(jMAtualizarStatus);
 
         jMenuBar1.add(jMArquivo);
@@ -117,8 +125,15 @@ public class Clientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jMnovoActionPerformed
 
     private void jMAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarActionPerformed
+        ClientesTableModel.getLista().get(jTCliente.getSelectedRow());
+        
+        
         
     }//GEN-LAST:event_jMAlterarActionPerformed
+
+    private void jMAtualizarStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAtualizarStatusActionPerformed
+        
+    }//GEN-LAST:event_jMAtualizarStatusActionPerformed
 
    
 
@@ -132,6 +147,8 @@ public class Clientes extends javax.swing.JDialog {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMnovo;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTCliente;
     // End of variables declaration//GEN-END:variables
+
+    
 }

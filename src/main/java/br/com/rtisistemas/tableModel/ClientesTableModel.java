@@ -16,6 +16,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
 
+   
+
     @Override
     public int getColumnCount() {
         return 4;

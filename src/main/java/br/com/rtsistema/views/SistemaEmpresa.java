@@ -5,17 +5,26 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtisistemas.tableModel.SistemaTableModel;
+import br.com.rtsistema.domain.Sistema;
+import br.com.rtsistema.persistence.CadastroSistemaDao;
+import java.util.List;
+
 /**
  *
  * @author Helton
  */
 public class SistemaEmpresa extends javax.swing.JDialog {
-
-    /**
-     * Creates new form Sistema
-     */
+    SistemaTableModel stTableModel = new SistemaTableModel();
+    private List<Sistema>  sistemas;
     public SistemaEmpresa() {
         initComponents();
+        CadastroSistemaDao cdSistemaDao = new CadastroSistemaDao();
+        sistemas = cdSistemaDao.findAll();
+        stTableModel.setLista(sistemas);
+        jTSistema.setModel(stTableModel);
+        setModal(true);
+               
         
         
     }
@@ -32,7 +41,7 @@ public class SistemaEmpresa extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTSistema = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,7 +56,7 @@ public class SistemaEmpresa extends javax.swing.JDialog {
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/window_edit.png"))); // NOI18N
         jButton2.setText("Alterar");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTSistema.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,7 +67,7 @@ public class SistemaEmpresa extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTSistema);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +109,6 @@ public class SistemaEmpresa extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTSistema;
     // End of variables declaration//GEN-END:variables
 }

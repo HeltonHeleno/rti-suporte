@@ -17,5 +17,9 @@ public class CadastroClienteDao extends GenericDao<Cliente> {
     public CadastroClienteDao() {
         super(Cliente.class);
     }
+
+    public Object getId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

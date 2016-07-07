@@ -20,14 +20,15 @@ import javax.swing.JOptionPane;
  * @author Helton
  */
 public class CadastroCliente extends javax.swing.JDialog {
+
     EmailTableModel tmUsuario = new EmailTableModel();
     private List<Email> emails;
-   
+
     public CadastroCliente() {
         initComponents();
         emails = new ArrayList<>();
-           tmUsuario.setLista(emails);
-           jTTableEmail.setModel(tmUsuario);
+        tmUsuario.setLista(emails);
+        jTTableEmail.setModel(tmUsuario);
         setModal(true);
     }
 
@@ -464,6 +465,11 @@ public class CadastroCliente extends javax.swing.JDialog {
 
         jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/forbidden.png"))); // NOI18N
         jBCancelar.setPreferredSize(new java.awt.Dimension(79, 23));
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
 
         jBConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/check.png"))); // NOI18N
         jBConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -516,7 +522,10 @@ public class CadastroCliente extends javax.swing.JDialog {
         salvar();
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
-  
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancelar;
@@ -580,15 +589,15 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JTextField jTcidade;
     // End of variables declaration//GEN-END:variables
 
-    private void salvar(){
-       Cliente cliente = new  Cliente();
-       cliente.setCpf(jTCPF_CNPJ.getText());
-       cliente.setNome(jTNome.getText());
-       cliente.setFantasia(jTFantasia.getText());
-       cliente.setIe(jTIE.getText());
-       cliente.setSsp(jTSSP.getText());
-       
-       Endereco endereco = new Endereco();
+    private void salvar() {
+        Cliente cliente = new Cliente();
+        cliente.setCpf(jTCPF_CNPJ.getText());
+        cliente.setNome(jTNome.getText());
+        cliente.setFantasia(jTFantasia.getText());
+        cliente.setIe(jTIE.getText());
+        cliente.setSsp(jTSSP.getText());
+
+        Endereco endereco = new Endereco();
         endereco.setLogradouro(jTLogradouro.getText());
         endereco.setEndereco(jTEndereco.getText());
         endereco.setNumero(jTNumero.getText());
@@ -597,9 +606,9 @@ public class CadastroCliente extends javax.swing.JDialog {
         endereco.setCidade(jTcidade.getText());
         endereco.setEstado(jTEstado.getText());
         cliente.setEndereco(endereco);
-        
+
         cliente.setEmail(emails);
-        
+
         Telefone telefone = new Telefone();
         telefone.setDdd(jTDDD.getText());
         telefone.setTelefone1(jTTelefone1.getText());
@@ -626,7 +635,53 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTTelefone2.setText("");
         jTCelular.setText("");
         jTContato.setText("");
-        
-                
+    }
+
+    private void alterar() {
+        Cliente cliente = new Cliente();
+        cliente.setCpf(jTCPF_CNPJ.getText());
+        cliente.setNome(jTNome.getText());
+        cliente.setFantasia(jTFantasia.getText());
+        cliente.setIe(jTIE.getText());
+        cliente.setSsp(jTSSP.getText());
+
+        Endereco endereco = new Endereco();
+        endereco.setLogradouro(jTLogradouro.getText());
+        endereco.setEndereco(jTEndereco.getText());
+        endereco.setNumero(jTNumero.getText());
+        endereco.setComplemento(jTComplemento.getText());
+        endereco.setBairro(jTBairro.getText());
+        endereco.setCidade(jTcidade.getText());
+        endereco.setEstado(jTEstado.getText());
+        cliente.setEndereco(endereco);
+
+        cliente.setEmail(emails);
+
+        Telefone telefone = new Telefone();
+        telefone.setDdd(jTDDD.getText());
+        telefone.setTelefone1(jTTelefone1.getText());
+        telefone.setTelefone2(jTTelefone2.getText());
+        telefone.setCelular(jTCelular.getText());
+        telefone.setContato(jTContato.getText());
+        CadastroClienteDao cdClienteDao = new CadastroClienteDao();
+        cdClienteDao.salvar(cliente);
+        JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
+        jTCPF_CNPJ.setText("");
+        jTNome.setText("");
+        jTFantasia.setText("");
+        jTIE.setText("");
+        jTSSP.setText("");
+        jTLogradouro.setText("");
+        jTEndereco.setText("");
+        jTNumero.setText("");
+        jTComplemento.setText("");
+        jTBairro.setText("");
+        jTcidade.setText("");
+        jTEstado.setText("");
+        jTDDD.setText("");
+        jTTelefone1.setText("");
+        jTTelefone2.setText("");
+        jTCelular.setText("");
+        jTContato.setText("");
     }
 }

@@ -15,17 +15,28 @@ public class SistemaTableModel extends br.tablemodel.TableModelBase<Sistema> {
 
     @Override
     public int getColumnCount() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return 3;
     }
 
     @Override
     public String getColumnName(int column) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String[] colunas = {"Codigo", "Nome", "versão"};
+        return colunas[column];
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Sistema obj = lista.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return obj.getId();
+            case 1:
+                return obj.getSistema();
+            case 2:
+                return obj.getVersao();
+
+        }
+        return obj;
     }
-    
+
 }
