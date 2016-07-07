@@ -41,8 +41,8 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTBairro.setText(endereco.getBairro());
         jTcidade.setText(endereco.getCidade());
         jTEstado.setText(endereco.getEstado());
-        Email email = cliente.getEmail.get(0);
-        
+        Email email = cliente.getEmail().get(0);
+        tmUsuario.setLista(cliente.getEmail());
         Telefone telefone = cliente.getTelefone();
         jTDDD.setText(telefone.getDdd());
         jTTelefone1.setText(telefone.getTelefone1());
@@ -673,5 +673,4 @@ public class CadastroCliente extends javax.swing.JDialog {
 
     }
 
-   
 }
