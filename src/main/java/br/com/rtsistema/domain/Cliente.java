@@ -49,6 +49,17 @@ public class Cliente implements Serializable {
     
     @ManyToOne(cascade = CascadeType.ALL)
     private Telefone telefone;
+    
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Sistema sistema;
+
+    public Sistema getSistema() {
+        return sistema;
+    }
+
+    public void setSistema(Sistema sistema) {
+        this.sistema = sistema;
+    }  
 
     public Long getId() {
         return id;

@@ -125,7 +125,7 @@ public class Clientes extends javax.swing.JDialog {
     }//GEN-LAST:event_jMnovoActionPerformed
 
     private void jMAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAlterarActionPerformed
-        Cliente cliente = clTableModel.getClientes().get(jTCliente.getSelectedRow());
+        Cliente cliente = clTableModel.getValue(jTCliente.getSelectedRow());
         CadastroCliente cadastroCliente = new CadastroCliente(cliente);
 
     }//GEN-LAST:event_jMAlterarActionPerformed

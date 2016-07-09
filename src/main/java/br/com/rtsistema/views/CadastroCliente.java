@@ -10,6 +10,7 @@ import br.com.rtisistemas.tableModel.EmailTableModel;
 import br.com.rtsistema.domain.Cliente;
 import br.com.rtsistema.domain.Email;
 import br.com.rtsistema.domain.Endereco;
+import br.com.rtsistema.domain.Sistema;
 import br.com.rtsistema.domain.Telefone;
 import br.com.rtsistema.persistence.CadastroClienteDao;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class CadastroCliente extends javax.swing.JDialog {
     private List<Email> emails;
 
     public CadastroCliente(Cliente cliente) {
+        initComponents();
         initValues();
         // aqui vc vai setar os valores no campo
         jTCPF_CNPJ.setText(cliente.getCpf());
@@ -33,6 +35,7 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTFantasia.setText(cliente.getFantasia());
         jTIE.setText(cliente.getIe());
         jTSSP.setText(cliente.getSsp());
+        
         Endereco endereco = cliente.getEndereco();
         jTLogradouro.setText(endereco.getLogradouro());
         jTEndereco.setText(endereco.getEndereco());
@@ -49,6 +52,14 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTTelefone2.setText(telefone.getTelefone2());
         jTCelular.setText(telefone.getCelular());
         jTContato.setText(telefone.getContato());
+        Sistema sistema = cliente.getSistema();
+        jtSistema.setText(sistema.getSistema());
+        jTVersao.setText(sistema.getVersao());
+        jCnfe.setSelected(sistema.isNfe());
+        jCNfce.setSelected(sistema.isNfce());
+        jCNfse.setSelected(sistema.isNfse());
+        jCGrade.setSelected(sistema.isGrade());
+        jCModuloProd.setSelected(sistema.isModuloProducao());
         setVisible(true);
     }
 
@@ -130,6 +141,18 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTDDD = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLSistema = new javax.swing.JLabel();
+        jtSistema = new javax.swing.JTextField();
+        jLVersao = new javax.swing.JLabel();
+        jTVersao = new javax.swing.JTextField();
+        jCnfe = new javax.swing.JCheckBox();
+        jLModeloNotas = new javax.swing.JLabel();
+        jCNfce = new javax.swing.JCheckBox();
+        jCNfse = new javax.swing.JCheckBox();
+        jLConfiguracaoSistema = new javax.swing.JLabel();
+        jCGrade = new javax.swing.JCheckBox();
+        jCModuloProd = new javax.swing.JCheckBox();
         jBCancelar = new javax.swing.JButton();
         jBConfirmar = new javax.swing.JButton();
 
@@ -159,37 +182,33 @@ public class CadastroCliente extends javax.swing.JDialog {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLNome)
+                    .addComponent(jLCPF_CNPJ)
+                    .addComponent(jLFantasia)
+                    .addComponent(jLIE)
+                    .addComponent(jLExpedicao))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLNome)
+                        .addComponent(jTIE, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTNome, javax.swing.GroupLayout.PREFERRED_SIZE, 398, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLSSP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTSSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLCPF_CNPJ)
-                            .addComponent(jLFantasia)
-                            .addComponent(jLIE)
-                            .addComponent(jLExpedicao))
+                        .addComponent(jFExpedicao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLNascimento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jFNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLCadastro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTFantasia, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTCPF_CNPJ, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTIE, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLSSP)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTSSP, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jFExpedicao, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLNascimento)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jFNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLCadastro)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFCadastro)))))
-                .addContainerGap(235, Short.MAX_VALUE))
+                        .addComponent(jFCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTFantasia)
+                    .addComponent(jTNome))
+                .addContainerGap(217, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -471,15 +490,89 @@ public class CadastroCliente extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Contato", jPanel7);
 
+        jLSistema.setText("Sistema:");
+
+        jLVersao.setText("Versão:");
+
+        jCnfe.setText("NF-e");
+
+        jLModeloNotas.setText("Modelo de Notas:");
+
+        jCNfce.setText("NFC-e");
+
+        jCNfse.setText("NFS-e");
+
+        jLConfiguracaoSistema.setText("Configurações do Sistema:");
+
+        jCGrade.setText("Grade");
+
+        jCModuloProd.setText("Modulo de Produção");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLConfiguracaoSistema)
+                    .addComponent(jLVersao)
+                    .addComponent(jLSistema)
+                    .addComponent(jLModeloNotas))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jtSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTVersao, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jCnfe)
+                        .addGap(10, 10, 10)
+                        .addComponent(jCNfce)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCNfse))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addComponent(jCGrade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jCModuloProd)))
+                .addContainerGap(222, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLSistema)
+                    .addComponent(jtSistema, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLVersao)
+                    .addComponent(jTVersao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(4, 4, 4)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLModeloNotas)
+                    .addComponent(jCnfe)
+                    .addComponent(jCNfce)
+                    .addComponent(jCNfse))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCGrade)
+                    .addComponent(jLConfiguracaoSistema)
+                    .addComponent(jCModuloProd))
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 701, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 351, Short.MAX_VALUE)
+            .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
@@ -564,6 +657,11 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JButton jBConfirmar;
     private javax.swing.JButton jBExcluirEmail;
     private javax.swing.JButton jBSalvarEmail;
+    private javax.swing.JCheckBox jCGrade;
+    private javax.swing.JCheckBox jCModuloProd;
+    private javax.swing.JCheckBox jCNfce;
+    private javax.swing.JCheckBox jCNfse;
+    private javax.swing.JCheckBox jCnfe;
     private javax.swing.JFormattedTextField jFCadastro;
     private javax.swing.JFormattedTextField jFExpedicao;
     private javax.swing.JFormattedTextField jFNascimento;
@@ -573,6 +671,7 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLCelular;
     private javax.swing.JLabel jLCidade;
     private javax.swing.JLabel jLComplemento;
+    private javax.swing.JLabel jLConfiguracaoSistema;
     private javax.swing.JLabel jLContato;
     private javax.swing.JLabel jLDDD;
     private javax.swing.JLabel jLEndereco;
@@ -581,15 +680,19 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JLabel jLFantasia;
     private javax.swing.JLabel jLIE;
     private javax.swing.JLabel jLLogradouro;
+    private javax.swing.JLabel jLModeloNotas;
     private javax.swing.JLabel jLNascimento;
     private javax.swing.JLabel jLNome;
     private javax.swing.JLabel jLNumero;
     private javax.swing.JLabel jLSSP;
+    private javax.swing.JLabel jLSistema;
     private javax.swing.JLabel jLTelefone1;
     private javax.swing.JLabel jLTelefone2;
+    private javax.swing.JLabel jLVersao;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -617,11 +720,14 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JTable jTTableEmail;
     private javax.swing.JTextField jTTelefone1;
     private javax.swing.JTextField jTTelefone2;
+    private javax.swing.JTextField jTVersao;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTcidade;
+    private javax.swing.JTextField jtSistema;
     // End of variables declaration//GEN-END:variables
 
     private void salvar() {
+        if(!jTCPF_CNPJ.getText().equals("")){
         Cliente cliente = new Cliente();
         cliente.setCpf(jTCPF_CNPJ.getText());
         cliente.setNome(jTNome.getText());
@@ -647,6 +753,16 @@ public class CadastroCliente extends javax.swing.JDialog {
         telefone.setTelefone2(jTTelefone2.getText());
         telefone.setCelular(jTCelular.getText());
         telefone.setContato(jTContato.getText());
+        cliente.setTelefone(telefone);
+        Sistema sistema = new Sistema();
+        sistema.setSistema(jtSistema.getText());
+        sistema.setVersao(jTVersao.getText());
+        sistema.setNfe(jCnfe.isSelected());
+        sistema.setNfce(jCNfce.isSelected());
+        sistema.setNfse(jCNfse.isSelected());
+        sistema.setGrade(jCGrade.isSelected());
+        sistema.setModuloProducao(jCModuloProd.isSelected());
+        cliente.setSistema(sistema);
         CadastroClienteDao cdClienteDao = new CadastroClienteDao();
         cdClienteDao.salvar(cliente);
         JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
@@ -667,10 +783,18 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTTelefone2.setText("");
         jTCelular.setText("");
         jTContato.setText("");
-    }
-
-    private void alterar() {
-
+        jtSistema.setText("");
+        jTVersao.setText("");
+        jCnfe.setSelected(false);
+        jCNfce.setSelected(false);
+        jCNfse.setSelected(false);
+        jCGrade.setSelected(false);
+        jCModuloProd.setSelected(false);    
+        }else{
+            JOptionPane.showMessageDialog(null, "Campo CPF / CNPJ não informado.");
+        }
+        
+        
     }
 
 }

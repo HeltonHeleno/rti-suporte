@@ -5,14 +5,19 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtsistema.domain.Usuario;
+import br.com.rtsistema.persistence.CadastroUsuarioDao;
 import javax.swing.JDialog;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Helton
  */
 public class Login extends javax.swing.JDialog {
+    private static final String master = "admin";
+    CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
 
     /**
      * Creates new form Login
@@ -21,7 +26,11 @@ public class Login extends javax.swing.JDialog {
         initComponents();
     }
 
-    
+    /*public Login(Usuario usuario){
+        String usuarios = usuario.getUsuario();
+        usuario.getUsuario();
+        usuario.getSenha();
+    }*/
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -134,21 +143,29 @@ public class Login extends javax.swing.JDialog {
     }//GEN-LAST:event_jPSenhaActionPerformed
 
     private void jBEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEntrarActionPerformed
-        
-        TelaPrincipal telaPrincipal = new TelaPrincipal();
-        telaPrincipal.setVisible(true);
-        this.setVisible(false);
+        String usuario = jTUsuario.getText();
+        String senha = jPSenha.getText();
+        Usuario user = cdUsuarioDao.findUsuario(usuario, senha);
+        if (user != null || usuario.equals(master) ) {
+            TelaPrincipal telaPrincipal = new TelaPrincipal();
+            telaPrincipal.setVisible(true);
+            this.setVisible(false);
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario ou Senha invalido");
+        }
+
     }//GEN-LAST:event_jBEntrarActionPerformed
 
     private void jBSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSairActionPerformed
         this.setVisible(false);
+        System.exit(0);
     }//GEN-LAST:event_jBSairActionPerformed
 
     private void jTUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTUsuarioActionPerformed
 
-     /**
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -174,8 +191,7 @@ public class Login extends javax.swing.JDialog {
             java.util.logging.Logger.getLogger(TelaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-       
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -194,4 +210,5 @@ public class Login extends javax.swing.JDialog {
     private javax.swing.JPasswordField jPSenha;
     private javax.swing.JTextField jTUsuario;
     // End of variables declaration//GEN-END:variables
+
 }

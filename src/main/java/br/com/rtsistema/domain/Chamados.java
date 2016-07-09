@@ -8,9 +8,14 @@ package br.com.rtsistema.domain;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -18,18 +23,50 @@ import javax.persistence.Id;
  */
 @Entity
 public class Chamados implements Serializable {
-    
-    
-    @Id 
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String reclamante;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date data;
+    private String problemaRelatado;
+    private String dadosAnalisado;
+    private String possivelSolucao;
+    private String solucaoAplicada;
+    @Enumerated(EnumType.STRING)
+    private Classificacao classificacao;
+    @ManyToOne
+    private Cliente cliente;
+    @ManyToOne
+    private Usuario usuario;
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
     
-   private String reclamante;
-   private Date data;
-   private String problemaRelatado;
-   private String dadosAnalisado;
-   private String possivelSolucao;
-   private String solucaoAplicada;
+    public Classificacao getClassificacao() {
+        return classificacao;
+    }
+
+    public void setClassificacao(Classificacao classificacao) {
+        this.classificacao = classificacao;
+    }
+
+    
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     public Long getId() {
         return id;
@@ -86,6 +123,5 @@ public class Chamados implements Serializable {
     public void setSolucaoAplicada(String solucaoAplicada) {
         this.solucaoAplicada = solucaoAplicada;
     }
-   
-    
+
 }

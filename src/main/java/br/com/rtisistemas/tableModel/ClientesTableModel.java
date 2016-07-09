@@ -6,21 +6,12 @@
 package br.com.rtisistemas.tableModel;
 
 import br.com.rtsistema.domain.Cliente;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.table.AbstractTableModel;
 
 /**
  *
  * @author Helton
  */
 public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
-
-    private List<Cliente> clientes = new ArrayList<>();
-
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
 
     @Override
     public int getColumnCount() {

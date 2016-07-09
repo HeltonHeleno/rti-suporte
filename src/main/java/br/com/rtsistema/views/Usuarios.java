@@ -5,18 +5,26 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtisistemas.tableModel.UsuarioTableModel;
+import br.com.rtsistema.domain.Usuario;
+import br.com.rtsistema.persistence.CadastroUsuarioDao;
+import java.util.List;
+
 /**
  *
  * @author Helton
  */
 public class Usuarios extends javax.swing.JDialog {
-
-    /**
-     * Creates new form Usuarios
-     */
+    UsuarioTableModel usTableModel  = new UsuarioTableModel();
+    private List<Usuario> usuarios;
+   
     public Usuarios() {
         initComponents();
-       
+        CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
+        usuarios = cdUsuarioDao.findAll();
+        usTableModel.setLista(usuarios);
+        jTUsuario.setModel(usTableModel);
+        setModal(true);
         
     }
 
@@ -31,7 +39,7 @@ public class Usuarios extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTUsuario = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -42,7 +50,7 @@ public class Usuarios extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Usuarios");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -53,7 +61,7 @@ public class Usuarios extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTUsuario);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -118,6 +126,6 @@ public class Usuarios extends javax.swing.JDialog {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTUsuario;
     // End of variables declaration//GEN-END:variables
 }

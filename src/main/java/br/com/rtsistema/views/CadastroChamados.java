@@ -5,6 +5,17 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtsistema.domain.Cliente;
+import br.com.rtsistema.domain.Telefone;
+import br.com.rtsistema.persistence.CadastroChamadosDao;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Helton
@@ -16,6 +27,9 @@ public class CadastroChamados extends javax.swing.JDialog {
      */
     public CadastroChamados() {
            initComponents();
+           Date hoje = new Date();
+           String dtFormatado = new SimpleDateFormat("DD/mm/yyyy").format(hoje);
+           jFData.setText(dtFormatado);
            setModal(true);
     }
 
@@ -59,18 +73,18 @@ public class CadastroChamados extends javax.swing.JDialog {
         jPanel7 = new javax.swing.JPanel();
         jLProblemaRelatado = new javax.swing.JLabel();
         jSProblemaRelatado = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        jTProblemaRelatado = new javax.swing.JTextPane();
         jLDadosAnalisados = new javax.swing.JLabel();
         jSDadosAnalisados = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
+        jTDadosAnalisados = new javax.swing.JTextPane();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jLPossivelSolucao = new javax.swing.JLabel();
         jSPossivelSolucao = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        jTPossivelSolucao = new javax.swing.JTextPane();
         jLSolucaoAplicada = new javax.swing.JLabel();
         jSsolucaoAplicada = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTSolucaoAplicada = new javax.swing.JTextArea();
         jBCancelar = new javax.swing.JButton();
         jBConfirmar = new javax.swing.JButton();
 
@@ -188,7 +202,7 @@ public class CadastroChamados extends javax.swing.JDialog {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTAtendente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLAtendende))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -206,34 +220,32 @@ public class CadastroChamados extends javax.swing.JDialog {
 
         jLProblemaRelatado.setText("Problema Relatado:");
 
-        jSProblemaRelatado.setViewportView(jTextPane1);
+        jSProblemaRelatado.setViewportView(jTProblemaRelatado);
 
         jLDadosAnalisados.setText("Dados Analisados:");
 
-        jSDadosAnalisados.setViewportView(jTextPane2);
+        jSDadosAnalisados.setViewportView(jTDadosAnalisados);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(45, 45, 45)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jSDadosAnalisados, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLProblemaRelatado)
+                        .addComponent(jLDadosAnalisados)
                         .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGap(38, 38, 38)
-                            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLProblemaRelatado)
-                                .addComponent(jLDadosAnalisados)))
-                        .addGroup(jPanel7Layout.createSequentialGroup()
-                            .addGap(72, 72, 72)
+                            .addGap(34, 34, 34)
                             .addComponent(jSProblemaRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(26, 26, 26)
                 .addComponent(jLProblemaRelatado)
                 .addGap(18, 18, 18)
                 .addComponent(jSProblemaRelatado, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -241,7 +253,7 @@ public class CadastroChamados extends javax.swing.JDialog {
                 .addComponent(jLDadosAnalisados)
                 .addGap(18, 18, 18)
                 .addComponent(jSDadosAnalisados, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -252,22 +264,20 @@ public class CadastroChamados extends javax.swing.JDialog {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jTabbedPane4.addTab("Dados do Chamado", jPanel6);
 
         jLPossivelSolucao.setText("Possivel Solução:");
 
-        jSPossivelSolucao.setViewportView(jTextPane3);
+        jSPossivelSolucao.setViewportView(jTPossivelSolucao);
 
         jLSolucaoAplicada.setText("Solução Aplicada:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jSsolucaoAplicada.setViewportView(jTextArea1);
+        jTSolucaoAplicada.setColumns(20);
+        jTSolucaoAplicada.setRows(5);
+        jSsolucaoAplicada.setViewportView(jTSolucaoAplicada);
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -298,7 +308,7 @@ public class CadastroChamados extends javax.swing.JDialog {
                 .addComponent(jLSolucaoAplicada)
                 .addGap(18, 18, 18)
                 .addComponent(jSsolucaoAplicada, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
@@ -338,8 +348,8 @@ public class CadastroChamados extends javax.swing.JDialog {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jBCancelar)
                     .addComponent(jBConfirmar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -377,7 +387,11 @@ public class CadastroChamados extends javax.swing.JDialog {
     }//GEN-LAST:event_jBBuscarClienteActionPerformed
 
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
-        
+        try {
+            salvar();
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroChamados.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
@@ -422,14 +436,40 @@ public class CadastroChamados extends javax.swing.JDialog {
     private javax.swing.JTextField jTAtendente;
     private javax.swing.JTextField jTContato;
     private javax.swing.JTextField jTCpfCnpj;
+    private javax.swing.JTextPane jTDadosAnalisados;
     private javax.swing.JTextField jTNomeCliente;
     private javax.swing.JTextField jTNomeFantasia;
     private javax.swing.JTextField jTNumChamado;
+    private javax.swing.JTextPane jTPossivelSolucao;
+    private javax.swing.JTextPane jTProblemaRelatado;
     private javax.swing.JTextField jTReclamante;
+    private javax.swing.JTextArea jTSolucaoAplicada;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane3;
     // End of variables declaration//GEN-END:variables
+    private void salvar() throws ParseException{
+        Cliente cliente = new Cliente();
+        cliente.setCpf(jTCpfCnpj.getText());
+        cliente.setNome(jTNomeCliente.getText());
+        cliente.setFantasia(jTNomeFantasia.getText());
+        Telefone telefone = new Telefone();
+        telefone.setTelefone1(jTContato.getText());
+        cliente.setTelefone(telefone);
+        Date data = DateFormat.getInstance().parse(jLData.getText());
+        br.com.rtsistema.domain.Chamados chamados = new br.com.rtsistema.domain.Chamados();
+        chamados.setReclamante(jTReclamante.getText());
+        chamados.setData(data);
+        chamados.setProblemaRelatado(jTProblemaRelatado.getText());
+        chamados.setDadosAnalisado(jTDadosAnalisados.getText());
+        chamados.setPossivelSolucao(jTPossivelSolucao.getText());
+        chamados.setSolucaoAplicada(jTSolucaoAplicada.getText());
+        CadastroChamadosDao cdChamadoDao = new CadastroChamadosDao();
+        cdChamadoDao.salvar(chamados);
+        JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
+        jTCpfCnpj.setText("");
+        jTNomeCliente.setText("");
+        
+        
+    }
+
+
 }

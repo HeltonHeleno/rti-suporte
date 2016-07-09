@@ -24,7 +24,52 @@ public class Sistema implements  Serializable{
 
     private String sistema;
     private String versao;
+    private boolean nfe;
+    private boolean nfce;
+    private boolean nfse;
+    private boolean grade;
+    private boolean moduloProducao;
 
+    public boolean isNfe() {
+        return nfe;
+    }
+
+    public void setNfe(boolean nfe) {
+        this.nfe = nfe;
+    }
+
+    public boolean isNfce() {
+        return nfce;
+    }
+
+    public void setNfce(boolean nfce) {
+        this.nfce = nfce;
+    }
+
+    public boolean isNfse() {
+        return nfse;
+    }
+
+    public void setNfse(boolean nfse) {
+        this.nfse = nfse;
+    }
+
+    public boolean isGrade() {
+        return grade;
+    }
+
+    public void setGrade(boolean grade) {
+        this.grade = grade;
+    }
+
+    public boolean isModuloProducao() {
+        return moduloProducao;
+    }
+
+    public void setModuloProducao(boolean moduloProducao) {
+        this.moduloProducao = moduloProducao;
+    }
+    
     public Long getId() {
         return id;
     }
