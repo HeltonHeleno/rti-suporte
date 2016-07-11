@@ -577,6 +577,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     
     private void salvar(){
+        if(!jTCPF_CNPJ.getText().equals("")){
         Usuario usuario = new Usuario();
         usuario.setCpf(jTCPF_CNPJ.getText());
         usuario.setNome(jTNome.getText());
@@ -602,7 +603,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
         telefone.setTelefone1(jTTelefone1.getText());
         telefone.setTelefone2(jTTelefone2.getText());
         telefone.setCelular(jTCelular.getText());
-        
+        usuario.setTelefone(telefone);      
        
         CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
         cdUsuarioDao.salvar(usuario);
@@ -623,6 +624,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
         jTTelefone1.setText("");
         jTTelefone2.setText("");
         jTCelular.setText("");
+    }
     }
 
 }

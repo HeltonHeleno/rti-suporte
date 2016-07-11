@@ -13,8 +13,14 @@ import br.com.rtsistema.domain.Endereco;
 import br.com.rtsistema.domain.Sistema;
 import br.com.rtsistema.domain.Telefone;
 import br.com.rtsistema.persistence.CadastroClienteDao;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,7 +41,6 @@ public class CadastroCliente extends javax.swing.JDialog {
         jTFantasia.setText(cliente.getFantasia());
         jTIE.setText(cliente.getIe());
         jTSSP.setText(cliente.getSsp());
-        
         Endereco endereco = cliente.getEndereco();
         jTLogradouro.setText(endereco.getLogradouro());
         jTEndereco.setText(endereco.getEndereco());
@@ -66,12 +71,18 @@ public class CadastroCliente extends javax.swing.JDialog {
     public CadastroCliente() {
         initComponents();
         initValues();
+
     }
 
     private void initValues() {
         emails = new ArrayList<>();
         tmUsuario.setLista(emails);
         jTTableEmail.setModel(tmUsuario);
+        Date hoje = new Date();
+        String dtFormatado = new SimpleDateFormat("DD/mm/yyyy").format(hoje);
+        jFCadastro.setText(dtFormatado);
+        jFExpedicao.setText(dtFormatado);
+        jFNascimento.setText(dtFormatado);
         setModal(true);
     }
 
@@ -644,7 +655,11 @@ public class CadastroCliente extends javax.swing.JDialog {
     }//GEN-LAST:event_jBSalvarEmailActionPerformed
 
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
-        salvar();
+        try {
+            salvar();
+        } catch (ParseException ex) {
+            Logger.getLogger(CadastroCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
@@ -726,75 +741,74 @@ public class CadastroCliente extends javax.swing.JDialog {
     private javax.swing.JTextField jtSistema;
     // End of variables declaration//GEN-END:variables
 
-    private void salvar() {
-        if(!jTCPF_CNPJ.getText().equals("")){
-        Cliente cliente = new Cliente();
-        cliente.setCpf(jTCPF_CNPJ.getText());
-        cliente.setNome(jTNome.getText());
-        cliente.setFantasia(jTFantasia.getText());
-        cliente.setIe(jTIE.getText());
-        cliente.setSsp(jTSSP.getText());
+    private void salvar() throws ParseException {
+        if (!jTCPF_CNPJ.getText().equals("")) {
+            Cliente cliente = new Cliente();
+            cliente.setCpf(jTCPF_CNPJ.getText());
+            cliente.setNome(jTNome.getText());
+            cliente.setFantasia(jTFantasia.getText());
+            cliente.setIe(jTIE.getText());
+            cliente.setSsp(jTSSP.getText());
+            Date data = DateFormat.getInstance().parse(jFCadastro.getText());
+            Endereco endereco = new Endereco();
+            endereco.setLogradouro(jTLogradouro.getText());
+            endereco.setEndereco(jTEndereco.getText());
+            endereco.setNumero(jTNumero.getText());
+            endereco.setComplemento(jTComplemento.getText());
+            endereco.setBairro(jTBairro.getText());
+            endereco.setCidade(jTcidade.getText());
+            endereco.setEstado(jTEstado.getText());
+            cliente.setEndereco(endereco);
 
-        Endereco endereco = new Endereco();
-        endereco.setLogradouro(jTLogradouro.getText());
-        endereco.setEndereco(jTEndereco.getText());
-        endereco.setNumero(jTNumero.getText());
-        endereco.setComplemento(jTComplemento.getText());
-        endereco.setBairro(jTBairro.getText());
-        endereco.setCidade(jTcidade.getText());
-        endereco.setEstado(jTEstado.getText());
-        cliente.setEndereco(endereco);
+            cliente.setEmail(emails);
 
-        cliente.setEmail(emails);
-
-        Telefone telefone = new Telefone();
-        telefone.setDdd(jTDDD.getText());
-        telefone.setTelefone1(jTTelefone1.getText());
-        telefone.setTelefone2(jTTelefone2.getText());
-        telefone.setCelular(jTCelular.getText());
-        telefone.setContato(jTContato.getText());
-        cliente.setTelefone(telefone);
-        Sistema sistema = new Sistema();
-        sistema.setSistema(jtSistema.getText());
-        sistema.setVersao(jTVersao.getText());
-        sistema.setNfe(jCnfe.isSelected());
-        sistema.setNfce(jCNfce.isSelected());
-        sistema.setNfse(jCNfse.isSelected());
-        sistema.setGrade(jCGrade.isSelected());
-        sistema.setModuloProducao(jCModuloProd.isSelected());
-        cliente.setSistema(sistema);
-        CadastroClienteDao cdClienteDao = new CadastroClienteDao();
-        cdClienteDao.salvar(cliente);
-        JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
-        jTCPF_CNPJ.setText("");
-        jTNome.setText("");
-        jTFantasia.setText("");
-        jTIE.setText("");
-        jTSSP.setText("");
-        jTLogradouro.setText("");
-        jTEndereco.setText("");
-        jTNumero.setText("");
-        jTComplemento.setText("");
-        jTBairro.setText("");
-        jTcidade.setText("");
-        jTEstado.setText("");
-        jTDDD.setText("");
-        jTTelefone1.setText("");
-        jTTelefone2.setText("");
-        jTCelular.setText("");
-        jTContato.setText("");
-        jtSistema.setText("");
-        jTVersao.setText("");
-        jCnfe.setSelected(false);
-        jCNfce.setSelected(false);
-        jCNfse.setSelected(false);
-        jCGrade.setSelected(false);
-        jCModuloProd.setSelected(false);    
-        }else{
+            Telefone telefone = new Telefone();
+            telefone.setDdd(jTDDD.getText());
+            telefone.setTelefone1(jTTelefone1.getText());
+            telefone.setTelefone2(jTTelefone2.getText());
+            telefone.setCelular(jTCelular.getText());
+            telefone.setContato(jTContato.getText());
+            cliente.setTelefone(telefone);
+            Sistema sistema = new Sistema();
+            sistema.setSistema(jtSistema.getText());
+            sistema.setVersao(jTVersao.getText());
+            sistema.setNfe(jCnfe.isSelected());
+            sistema.setNfce(jCNfce.isSelected());
+            sistema.setNfse(jCNfse.isSelected());
+            sistema.setGrade(jCGrade.isSelected());
+            sistema.setModuloProducao(jCModuloProd.isSelected());
+            cliente.setSistema(sistema);
+            CadastroClienteDao cdClienteDao = new CadastroClienteDao();
+            cdClienteDao.salvar(cliente);
+            JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
+            jTCPF_CNPJ.setText("");
+            jTNome.setText("");
+            jTFantasia.setText("");
+            jTIE.setText("");
+            jTSSP.setText("");
+            jTLogradouro.setText("");
+            jTEndereco.setText("");
+            jTNumero.setText("");
+            jTComplemento.setText("");
+            jTBairro.setText("");
+            jTcidade.setText("");
+            jTEstado.setText("");
+            jTDDD.setText("");
+            jTTelefone1.setText("");
+            jTTelefone2.setText("");
+            jTCelular.setText("");
+            jTContato.setText("");
+            jtSistema.setText("");
+            jTVersao.setText("");
+            jCnfe.setSelected(false);
+            jCNfce.setSelected(false);
+            jCNfse.setSelected(false);
+            jCGrade.setSelected(false);
+            jCModuloProd.setSelected(false);
+        } else {
             JOptionPane.showMessageDialog(null, "Campo CPF / CNPJ não informado.");
         }
-        
-        
+
     }
 
 }

@@ -14,7 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 
 /**
  *
- * @author Fernando
+ * @author Helton
  * @param <T>
  */
 public class AbstractComboModel<T> implements ComboBoxModel {

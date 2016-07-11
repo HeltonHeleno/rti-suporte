@@ -16,7 +16,7 @@ public class Chamados extends javax.swing.JDialog {
      */
    public Chamados (){
        initComponents();
-       setModal(true);
+       //setModal(true);
    }
 
     /**
@@ -43,6 +43,7 @@ public class Chamados extends javax.swing.JDialog {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -69,7 +70,7 @@ public class Chamados extends javax.swing.JDialog {
         jBBuscarChamado.setText("Buscar Chamado");
 
         jBAtualizaTela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/index_refresh.png"))); // NOI18N
-        jBAtualizaTela.setText("Atualizar Tela");
+        jBAtualizaTela.setText("Aterar Chamado");
 
         jBFechaCamado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/index_preferences.png"))); // NOI18N
         jBFechaCamado.setText("Fechar Chamado");
@@ -91,7 +92,7 @@ public class Chamados extends javax.swing.JDialog {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,7 +129,7 @@ public class Chamados extends javax.swing.JDialog {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 877, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 953, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -159,20 +160,25 @@ public class Chamados extends javax.swing.JDialog {
             .addComponent(jTabbedPane1)
         );
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/index_replace.png"))); // NOI18N
+        jButton1.setText("Atualizar Status");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(57, 57, 57)
                 .addComponent(jBNovoChamado)
-                .addGap(56, 56, 56)
-                .addComponent(jBBuscarChamado)
-                .addGap(48, 48, 48)
+                .addGap(39, 39, 39)
                 .addComponent(jBAtualizaTela, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBBuscarChamado)
                 .addGap(38, 38, 38)
                 .addComponent(jBFechaCamado)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(49, 49, 49))
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
@@ -183,7 +189,8 @@ public class Chamados extends javax.swing.JDialog {
                     .addComponent(jBNovoChamado)
                     .addComponent(jBBuscarChamado)
                     .addComponent(jBFechaCamado)
-                    .addComponent(jBAtualizaTela))
+                    .addComponent(jBAtualizaTela)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -203,6 +210,7 @@ public class Chamados extends javax.swing.JDialog {
     private javax.swing.JButton jBBuscarChamado;
     private javax.swing.JButton jBFechaCamado;
     private javax.swing.JButton jBNovoChamado;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

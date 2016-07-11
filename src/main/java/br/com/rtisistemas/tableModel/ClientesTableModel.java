@@ -6,6 +6,7 @@
 package br.com.rtisistemas.tableModel;
 
 import br.com.rtsistema.domain.Cliente;
+import br.com.rtsistema.views.Clientes;
 
 /**
  *
@@ -38,6 +39,10 @@ public class ClientesTableModel extends br.tablemodel.TableModelBase<Cliente> {
                 return obj.getCpf();
         }
         return obj;
+    }
+
+    public Clientes getListeners(int selectedRow) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

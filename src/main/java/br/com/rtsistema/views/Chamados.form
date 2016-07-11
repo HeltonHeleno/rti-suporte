@@ -41,15 +41,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
               <Component id="jBNovoChamado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-              <Component id="jBBuscarChamado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
               <Component id="jBAtualizaTela" min="-2" pref="141" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jBBuscarChamado" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="jBFechaCamado" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
           </Group>
           <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -63,6 +65,7 @@
                   <Component id="jBBuscarChamado" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBFechaCamado" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBAtualizaTela" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
@@ -95,7 +98,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icones/index_refresh.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Atualizar Tela"/>
+        <Property name="text" type="java.lang.String" value="Aterar Chamado"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="jBFechaCamado">
@@ -152,7 +155,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane3" alignment="0" pref="877" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" pref="953" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -214,7 +217,7 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="877" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="953" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -253,5 +256,13 @@
         </Container>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/icones/index_replace.png"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Atualizar Status"/>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -5,13 +5,18 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtisistemas.tableModel.ClientesTableModel;
 import br.com.rtsistema.domain.Cliente;
+
+import br.com.rtsistema.domain.ComboModelTamanho;
 import br.com.rtsistema.domain.Telefone;
+
 import br.com.rtsistema.persistence.CadastroChamadosDao;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -22,18 +27,35 @@ import javax.swing.JOptionPane;
  */
 public class CadastroChamados extends javax.swing.JDialog {
 
-    /**
-     * Creates new form CadastroChamados
-     */
-    public CadastroChamados() {
-           initComponents();
-           Date hoje = new Date();
-           String dtFormatado = new SimpleDateFormat("DD/mm/yyyy").format(hoje);
-           jFData.setText(dtFormatado);
-           setModal(true);
+    Clientes cliente = new Clientes();
+    ClientesTableModel clTableModel = new ClientesTableModel();
+    private List<Cliente> clientes;
+
+    public CadastroChamados(Cliente cliente) {
+        initComponents();
+        initValues();
+        jTCpfCnpj.setText(cliente.getCpf());
+        jTNomeCliente.setText(cliente.getNome());
+        jTNomeFantasia.setText(cliente.getFantasia());
+        Telefone telefone = cliente.getTelefone();
+        jTContato.setText(telefone.getTelefone1());
+        setModal(true);
     }
 
+    public CadastroChamados() {
+        initComponents();
+        initValues();
+        
+    }
     
+
+    private void initValues() {
+        Date hoje = new Date();
+        String dtFormatado = new SimpleDateFormat("DD/mm/yyyy").format(hoje);
+        jFData.setText(dtFormatado);
+        ComboModelTamanho cbModelTamanho = new ComboModelTamanho();
+        jCClassificacao.setModel(cbModelTamanho);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -325,6 +347,11 @@ public class CadastroChamados extends javax.swing.JDialog {
         jTabbedPane4.addTab("Solução do Problema", jPanel8);
 
         jBCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/forbidden.png"))); // NOI18N
+        jBCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelarActionPerformed(evt);
+            }
+        });
 
         jBConfirmar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/check.png"))); // NOI18N
         jBConfirmar.addActionListener(new java.awt.event.ActionListener() {
@@ -382,8 +409,9 @@ public class CadastroChamados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarClienteActionPerformed
-        Clientes clientes = new Clientes();
-        clientes.setVisible(true);
+        Clientes client = new Clientes();
+        client.setVisible(true);
+        Clientes cliente = clTableModel.getValue(jTCliente.getSelectedRow());
     }//GEN-LAST:event_jBBuscarClienteActionPerformed
 
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
@@ -392,14 +420,17 @@ public class CadastroChamados extends javax.swing.JDialog {
         } catch (ParseException ex) {
             Logger.getLogger(CadastroChamados.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
     private void jCClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCClassificacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCClassificacaoActionPerformed
 
-  
+    private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_jBCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscarCliente;
@@ -446,7 +477,7 @@ public class CadastroChamados extends javax.swing.JDialog {
     private javax.swing.JTextArea jTSolucaoAplicada;
     private javax.swing.JTabbedPane jTabbedPane4;
     // End of variables declaration//GEN-END:variables
-    private void salvar() throws ParseException{
+    private void salvar() throws ParseException {
         Cliente cliente = new Cliente();
         cliente.setCpf(jTCpfCnpj.getText());
         cliente.setNome(jTNomeCliente.getText());
@@ -467,9 +498,7 @@ public class CadastroChamados extends javax.swing.JDialog {
         JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
         jTCpfCnpj.setText("");
         jTNomeCliente.setText("");
-        
-        
-    }
 
+    }
 
 }
