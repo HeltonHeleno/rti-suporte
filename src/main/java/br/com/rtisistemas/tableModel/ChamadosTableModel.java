@@ -6,7 +6,9 @@
 package br.com.rtisistemas.tableModel;
 
 import br.com.rtsistema.domain.Chamados;
+import br.com.rtsistema.domain.Cliente;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -14,6 +16,11 @@ import java.io.Serializable;
  */
 public class ChamadosTableModel extends br.tablemodel.TableModelBase<Chamados>{
 
+    
+
+    
+
+    
     @Override
     public int getColumnCount() {
        return 4;
@@ -21,7 +28,7 @@ public class ChamadosTableModel extends br.tablemodel.TableModelBase<Chamados>{
 
     @Override
     public String getColumnName(int column) {
-        String[] colunas = {"Codigo", "Nome", "IE", "CPF"};
+        String[] colunas = {"Codigo", "CPF", "Nome", "Problema Relatado"};
         return colunas[column];
     }
 
@@ -35,5 +42,7 @@ public class ChamadosTableModel extends br.tablemodel.TableModelBase<Chamados>{
         }
          return obj;
     }
+
+  
     
 }

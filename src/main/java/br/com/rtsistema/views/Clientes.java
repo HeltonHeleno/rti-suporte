@@ -29,6 +29,12 @@ public class Clientes extends javax.swing.JDialog {
         setModal(true);
     }
 
+    public Clientes(Boolean exibirBotao) {
+        this();
+        jBselecionarCliente.setVisible(exibirBotao);
+
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,14 +46,12 @@ public class Clientes extends javax.swing.JDialog {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTCliente = new javax.swing.JTable();
+        jBselecionarCliente = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMArquivo = new javax.swing.JMenu();
         jMnovo = new javax.swing.JMenuItem();
         jMAlterar = new javax.swing.JMenuItem();
-        jMAtualizarStatus = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMFiltrosPersonalizados = new javax.swing.JMenu();
-        jMGerenciar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Clientes");
@@ -64,6 +68,13 @@ public class Clientes extends javax.swing.JDialog {
             }
         ));
         jScrollPane1.setViewportView(jTCliente);
+
+        jBselecionarCliente.setText("Selecionar Cliente");
+        jBselecionarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBselecionarClienteActionPerformed(evt);
+            }
+        });
 
         jMArquivo.setText("Arquivo");
 
@@ -83,25 +94,10 @@ public class Clientes extends javax.swing.JDialog {
         });
         jMArquivo.add(jMAlterar);
 
-        jMAtualizarStatus.setText("Atualizar Status");
-        jMAtualizarStatus.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMAtualizarStatusActionPerformed(evt);
-            }
-        });
-        jMArquivo.add(jMAtualizarStatus);
-
         jMenuBar1.add(jMArquivo);
 
         jMenu2.setText("Localizar");
         jMenuBar1.add(jMenu2);
-
-        jMFiltrosPersonalizados.setText("Filtros Personalizados");
-
-        jMGerenciar.setText("Gerenciar");
-        jMFiltrosPersonalizados.add(jMGerenciar);
-
-        jMenuBar1.add(jMFiltrosPersonalizados);
 
         setJMenuBar(jMenuBar1);
 
@@ -110,10 +106,18 @@ public class Clientes extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jBselecionarCliente)
+                .addGap(143, 143, 143))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBselecionarCliente)
+                .addGap(0, 11, Short.MAX_VALUE))
         );
 
         pack();
@@ -130,17 +134,17 @@ public class Clientes extends javax.swing.JDialog {
 
     }//GEN-LAST:event_jMAlterarActionPerformed
 
-    private void jMAtualizarStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMAtualizarStatusActionPerformed
-
-    }//GEN-LAST:event_jMAtualizarStatusActionPerformed
+    private void jBselecionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBselecionarClienteActionPerformed
+        Cliente client = clTableModel.getValue(jTCliente.getSelectedRow());
+        CadastroChamados cdChamados = new CadastroChamados(client);
+        cdChamados.setVisible(true);
+    }//GEN-LAST:event_jBselecionarClienteActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBselecionarCliente;
     private javax.swing.JMenuItem jMAlterar;
     private javax.swing.JMenu jMArquivo;
-    private javax.swing.JMenuItem jMAtualizarStatus;
-    private javax.swing.JMenu jMFiltrosPersonalizados;
-    private javax.swing.JMenuItem jMGerenciar;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMnovo;

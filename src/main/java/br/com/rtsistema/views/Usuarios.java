@@ -24,7 +24,7 @@ public class Usuarios extends javax.swing.JDialog {
         usuarios = cdUsuarioDao.findAll();
         usTableModel.setLista(usuarios);
         jTUsuario.setModel(usTableModel);
-        setModal(true);
+        
         
     }
 
@@ -85,6 +85,11 @@ public class Usuarios extends javax.swing.JDialog {
         jMenu1.add(jMenuItem1);
 
         jMenuItem2.setText("Alterar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem2);
 
         jMenuItem3.setText("Excluir");
@@ -93,6 +98,11 @@ public class Usuarios extends javax.swing.JDialog {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Localizar");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -115,6 +125,15 @@ public class Usuarios extends javax.swing.JDialog {
         CadastroUsuario cadastroUsuario = new CadastroUsuario();
         cadastroUsuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+        
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Usuario usuario = usTableModel.getValue(jTUsuario.getSelectedRow());
+        CadastroUsuario cadastroUsuario = new CadastroUsuario();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
    
     // Variables declaration - do not modify//GEN-BEGIN:variables

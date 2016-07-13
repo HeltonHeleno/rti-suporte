@@ -6,6 +6,7 @@
 package br.com.rtsistema.views;
 
 import br.com.rtisistemas.tableModel.ClientesTableModel;
+import br.com.rtsistema.domain.Classificacao;
 import br.com.rtsistema.domain.Cliente;
 
 import br.com.rtsistema.domain.ComboModelTamanho;
@@ -27,13 +28,10 @@ import javax.swing.JOptionPane;
  */
 public class CadastroChamados extends javax.swing.JDialog {
 
-    Clientes cliente = new Clientes();
-    ClientesTableModel clTableModel = new ClientesTableModel();
-    private List<Cliente> clientes;
+    ComboModelTamanho cbModelTamanho = new ComboModelTamanho();
 
     public CadastroChamados(Cliente cliente) {
-        initComponents();
-        initValues();
+        this();
         jTCpfCnpj.setText(cliente.getCpf());
         jTNomeCliente.setText(cliente.getNome());
         jTNomeFantasia.setText(cliente.getFantasia());
@@ -45,15 +43,14 @@ public class CadastroChamados extends javax.swing.JDialog {
     public CadastroChamados() {
         initComponents();
         initValues();
-        
+
     }
-    
 
     private void initValues() {
         Date hoje = new Date();
         String dtFormatado = new SimpleDateFormat("DD/mm/yyyy").format(hoje);
         jFData.setText(dtFormatado);
-        ComboModelTamanho cbModelTamanho = new ComboModelTamanho();
+
         jCClassificacao.setModel(cbModelTamanho);
     }
 
@@ -410,8 +407,9 @@ public class CadastroChamados extends javax.swing.JDialog {
 
     private void jBBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarClienteActionPerformed
         Clientes client = new Clientes();
+        this.setVisible(false);
         client.setVisible(true);
-        Clientes cliente = clTableModel.getValue(jTCliente.getSelectedRow());
+
     }//GEN-LAST:event_jBBuscarClienteActionPerformed
 
     private void jBConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmarActionPerformed
@@ -424,7 +422,33 @@ public class CadastroChamados extends javax.swing.JDialog {
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
     private void jCClassificacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCClassificacaoActionPerformed
-        // TODO add your handling code here:
+
+        String selected = (String) jCClassificacao.getSelectedItem();
+        Classificacao classificacao = Classificacao.valueOf(selected);
+        if (classificacao.equals(Classificacao.TREINAMENTO)) {
+            jTPossivelSolucao.setEnabled(false);
+            jTProblemaRelatado.setEnabled(false);
+        }
+        if (classificacao.equals(Classificacao.ATUALIZACAO)) {
+            jTPossivelSolucao.setEnabled(false);
+            jTDadosAnalisados.setEnabled(false);
+        }
+        if (classificacao.equals(Classificacao.DUVIDA)) {
+            jTPossivelSolucao.setEnabled(false);
+
+        }
+        if(classificacao.equals(Classificacao.IMPLEMENTACAO)){
+            jTDadosAnalisados.setEnabled(true);
+            jTSolucaoAplicada.setEnabled(true);
+            jTProblemaRelatado.setEnabled(true);
+            jTPossivelSolucao.setEnabled(true);
+        }
+        if(classificacao.equals(Classificacao.ERRO)){
+            jTDadosAnalisados.setEnabled(true);
+            jTSolucaoAplicada.setEnabled(true);
+            jTProblemaRelatado.setEnabled(true);
+            jTPossivelSolucao.setEnabled(true);
+        }
     }//GEN-LAST:event_jCClassificacaoActionPerformed
 
     private void jBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelarActionPerformed

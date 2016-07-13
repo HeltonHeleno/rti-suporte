@@ -5,19 +5,30 @@
  */
 package br.com.rtsistema.views;
 
+import br.com.rtisistemas.tableModel.ChamadosTableModel;
+import br.com.rtsistema.domain.Chamados;
+import br.com.rtsistema.persistence.CadastroChamadosDao;
+import java.util.List;
+
 /**
  *
  * @author Helton
  */
-public class Chamados extends javax.swing.JDialog {
+public class Chamado extends javax.swing.JDialog {
+    
+    ChamadosTableModel tmChamados = new ChamadosTableModel();
+    private List<Chamados> chamado;
+    
 
-    /**
-     * Creates new form Chamados
-     */
-   public Chamados (){
-       initComponents();
-       //setModal(true);
-   }
+    public Chamado() {
+        initComponents();
+        /*CadastroChamadosDao cchamados = new CadastroChamadosDao();
+        chamado = cchamados.findChamadosAberto();
+        tmChamados.setLista(chamado);
+        jTChamadosAbertos.setModel(tmChamados);*/
+        
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -38,11 +49,11 @@ public class Chamados extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        jTChamadosAbertos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jTChamadosFinalizados = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -71,11 +82,16 @@ public class Chamados extends javax.swing.JDialog {
 
         jBAtualizaTela.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/index_refresh.png"))); // NOI18N
         jBAtualizaTela.setText("Aterar Chamado");
+        jBAtualizaTela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAtualizaTelaActionPerformed(evt);
+            }
+        });
 
         jBFechaCamado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icones/index_preferences.png"))); // NOI18N
         jBFechaCamado.setText("Fechar Chamado");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        jTChamadosAbertos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -86,7 +102,7 @@ public class Chamados extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(jTChamadosAbertos);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -112,7 +128,7 @@ public class Chamados extends javax.swing.JDialog {
 
         jTabbedPane1.addTab("Chamados em aberto", jPanel3);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        jTChamadosFinalizados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -123,7 +139,7 @@ public class Chamados extends javax.swing.JDialog {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        jScrollPane2.setViewportView(jTChamadosFinalizados);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -199,11 +215,14 @@ public class Chamados extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBNovoChamadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNovoChamadoActionPerformed
-            CadastroChamados cadastroChamados = new CadastroChamados();
-            cadastroChamados.setVisible(true);
+        CadastroChamados cadastroChamados = new CadastroChamados();
+        cadastroChamados.setVisible(true);
     }//GEN-LAST:event_jBNovoChamadoActionPerformed
 
-   
+    private void jBAtualizaTelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAtualizaTelaActionPerformed
+        
+    }//GEN-LAST:event_jBAtualizaTelaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAtualizaTela;
@@ -219,8 +238,8 @@ public class Chamados extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTChamadosAbertos;
+    private javax.swing.JTable jTChamadosFinalizados;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     // End of variables declaration//GEN-END:variables
 }

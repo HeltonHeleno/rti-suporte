@@ -35,12 +35,22 @@ public class Chamados implements Serializable {
     private String dadosAnalisado;
     private String possivelSolucao;
     private String solucaoAplicada;
+    private Boolean situacao;
+    
     @Enumerated(EnumType.STRING)
     private Classificacao classificacao;
     @ManyToOne
     private Cliente cliente;
     @ManyToOne
     private Usuario usuario;
+
+    public Boolean getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(Boolean situacao) {
+        this.situacao = situacao;
+    }
 
     public Usuario getUsuario() {
         return usuario;
@@ -122,6 +132,14 @@ public class Chamados implements Serializable {
 
     public void setSolucaoAplicada(String solucaoAplicada) {
         this.solucaoAplicada = solucaoAplicada;
+    }
+
+    public Object getNome() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getCpf() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

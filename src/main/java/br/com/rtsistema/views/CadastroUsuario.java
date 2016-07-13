@@ -21,19 +21,48 @@ import javax.swing.JOptionPane;
  * @author Helton
  */
 public class CadastroUsuario extends javax.swing.JDialog {
-    
+
     EmailTableModel tmUsuario = new EmailTableModel();
     private List<Email> emails;
 
-    /**
-     * Creates new form CadastroUsuario
-     */
+    public CadastroUsuario(Usuario usuario) {
+        initComponents();
+        initValues();
+        jTCPF_CNPJ.setText(usuario.getCpf());
+        jTNome.setText(usuario.getNome());
+        jTIE_RG.setText(usuario.getIe());
+        jTSSP.setText(usuario.getSsp());
+        jTUsuario.setText(usuario.getUsuario());
+        jPSenha.setText(usuario.getSenha());
+        Endereco endereco = usuario.getEndereco();
+        jTLogradouro.setText(endereco.getLogradouro());
+        jTEndereco.setText(endereco.getEndereco());
+        jTNumero.setText(endereco.getNumero());
+        jTComplemento.setText(endereco.getComplemento());
+        jTBairro.setText(endereco.getBairro());
+        jTCidade.setText(endereco.getCidade());
+        jTEstado.setText(endereco.getEstado());
+        Email email = usuario.getEmail().get(0);
+        tmUsuario.setLista(usuario.getEmail());
+        Telefone telefone = usuario.getTelefone();
+        jTDdd.setText(telefone.getDdd());
+        jTTelefone1.setText(telefone.getTelefone1());
+        jTTelefone2.setText(telefone.getTelefone2());
+        jTCelular.setText(telefone.getCelular());
+
+    }
+
     public CadastroUsuario() {
-           initComponents();
-           emails = new ArrayList<>();
-           tmUsuario.setLista(emails);
-           jTTableEmail.setModel(tmUsuario);
-       
+        initComponents();
+        initValues();
+    }
+
+    private void initValues() {
+        initComponents();
+        emails = new ArrayList<>();
+        tmUsuario.setLista(emails);
+        jTTableEmail.setModel(tmUsuario);
+        setModal(true);
     }
 
     /**
@@ -497,7 +526,7 @@ public class CadastroUsuario extends javax.swing.JDialog {
     }//GEN-LAST:event_jBConfirmarActionPerformed
 
     private void jTNomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTNomeKeyPressed
-        
+
     }//GEN-LAST:event_jTNomeKeyPressed
 
     private void jBSalvarEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalvarEmailActionPerformed
@@ -506,13 +535,12 @@ public class CadastroUsuario extends javax.swing.JDialog {
         emails.add(em);
         tmUsuario.setLista(emails);
         jTTableEmail.updateUI();
-       
 
-           
+
     }//GEN-LAST:event_jBSalvarEmailActionPerformed
 
     private void jBExcluiEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBExcluiEmailActionPerformed
-        
+
     }//GEN-LAST:event_jBExcluiEmailActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -575,56 +603,56 @@ public class CadastroUsuario extends javax.swing.JDialog {
     private javax.swing.JTextField jTUsuario;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-    
-    private void salvar(){
-        if(!jTCPF_CNPJ.getText().equals("")){
-        Usuario usuario = new Usuario();
-        usuario.setCpf(jTCPF_CNPJ.getText());
-        usuario.setNome(jTNome.getText());
-        usuario.setIe(jTIE_RG.getText());
-        usuario.setSsp(jTSSP.getText());
-        usuario.setUsuario(jTUsuario.getText());
-        usuario.setSenha(jPSenha.getText());
-        
-        Endereco endereco = new Endereco();
-        endereco.setLogradouro(jTLogradouro.getText());
-        endereco.setEndereco(jTEndereco.getText());
-        endereco.setNumero(jTNumero.getText());
-        endereco.setComplemento(jTComplemento.getText());
-        endereco.setBairro(jTBairro.getText());
-        endereco.setCidade(jTCidade.getText());
-        endereco.setEstado(jTEstado.getText());
-        usuario.setEndereco(endereco);
-        
-        usuario.setEmail(emails);
-                      
-        Telefone telefone = new Telefone();
-        telefone.setDdd(jTDdd.getText());
-        telefone.setTelefone1(jTTelefone1.getText());
-        telefone.setTelefone2(jTTelefone2.getText());
-        telefone.setCelular(jTCelular.getText());
-        usuario.setTelefone(telefone);      
-       
-        CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
-        cdUsuarioDao.salvar(usuario);
-        JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
-        jTCPF_CNPJ.setText("");
-        jTNome.setText("");
-        jTIE_RG.setText("");
-        jTSSP.setText("");
-        jTUsuario.setText("");
-        jPSenha.setText("");
-        jTCPF_CNPJ.setText("");
-        jTNome.setText("");
-        jTIE_RG.setText("");
-        jTSSP.setText("");
-        jTUsuario.setText("");
-        jPSenha.setText("");
-        jTDdd.setText("");
-        jTTelefone1.setText("");
-        jTTelefone2.setText("");
-        jTCelular.setText("");
-    }
+
+    private void salvar() {
+        if (!jTCPF_CNPJ.getText().equals("")) {
+            Usuario usuario = new Usuario();
+            usuario.setCpf(jTCPF_CNPJ.getText());
+            usuario.setNome(jTNome.getText());
+            usuario.setIe(jTIE_RG.getText());
+            usuario.setSsp(jTSSP.getText());
+            usuario.setUsuario(jTUsuario.getText());
+            usuario.setSenha(jPSenha.getText());
+
+            Endereco endereco = new Endereco();
+            endereco.setLogradouro(jTLogradouro.getText());
+            endereco.setEndereco(jTEndereco.getText());
+            endereco.setNumero(jTNumero.getText());
+            endereco.setComplemento(jTComplemento.getText());
+            endereco.setBairro(jTBairro.getText());
+            endereco.setCidade(jTCidade.getText());
+            endereco.setEstado(jTEstado.getText());
+            usuario.setEndereco(endereco);
+
+            usuario.setEmail(emails);
+
+            Telefone telefone = new Telefone();
+            telefone.setDdd(jTDdd.getText());
+            telefone.setTelefone1(jTTelefone1.getText());
+            telefone.setTelefone2(jTTelefone2.getText());
+            telefone.setCelular(jTCelular.getText());
+            usuario.setTelefone(telefone);
+
+            CadastroUsuarioDao cdUsuarioDao = new CadastroUsuarioDao();
+            cdUsuarioDao.salvar(usuario);
+            JOptionPane.showMessageDialog(null, "Operação Salva com sucesso!");
+            jTCPF_CNPJ.setText("");
+            jTNome.setText("");
+            jTIE_RG.setText("");
+            jTSSP.setText("");
+            jTUsuario.setText("");
+            jPSenha.setText("");
+            jTCPF_CNPJ.setText("");
+            jTNome.setText("");
+            jTIE_RG.setText("");
+            jTSSP.setText("");
+            jTUsuario.setText("");
+            jPSenha.setText("");
+            jTDdd.setText("");
+            jTTelefone1.setText("");
+            jTTelefone2.setText("");
+            jTCelular.setText("");
+        }
     }
 
 }
